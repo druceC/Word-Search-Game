@@ -1,9 +1,6 @@
-//
-//  main.cpp
 //  Word Search Project
-//
+
 //  Created by Druce Chua on 25/12/2021.
-//
 
 #include <iostream>
 #include <fstream>
@@ -22,29 +19,31 @@ int main() {
     int choice, size, choice2, score(0);
     string word;
     bool status(0), playAgain;
+    
     // Main Menu
     do{
         srand(time(NULL));
-        cout << "WORD SEARCH\n";
-        cout << "Choose your preferred category:\n";
-        cout << "1. Fruits\n";
-        cout << "2. Animals\n";
-        cout << "3. Countries\n";
-        cout << "4. Disney\n";
-        cout << "5. Geometry\n";
-        cout << "6. Exit Program\n";
+        cout << "WORD SEARCH"        << endl;
+        cout << "Enter the number that corresponds to your preferred category:"<< endl;;
+        cout << "(1) Fruits"         << endl;
+        cout << "(2) Animals"        << endl;
+        cout << "(3) Countries"      << endl;
+        cout << "(4) Disney"         << endl;
+        cout << "(5) Geometry"       << endl;
+        cout << "(6) Exit Program"   << endl;
         cin >> choice;
         score = 0;
         vector<string> wordArr;
         vector<string> twelveWords;
         vector<string> wordsFound;
         switch(choice){
+                
             // Fruits
             case 1:
                 status = 0;
                 playAgain = 0;
                 size = 44;
-                storeWords(wordArr,"Fruits.txt", size);
+                storeWords(wordArr,"fruits.txt", size);
                 chooseWords(wordArr, size, twelveWords);
                 printMatrix(twelveWords);
                 do{
@@ -65,9 +64,9 @@ int main() {
                         bool valid(0);
                         cout << "Enter word: ";
                         cin >> word;
-                        // for_each(word.begin(), word.end(), [](char & c){
-                        //         c = toupper(c);
-                        //     });
+                        for_each(word.begin(), word.end(), [](char & c){
+                            c = toupper(c);
+                        });
                         // Check if entered word is valid
                         for(int i=0; i<5; i++){
                             if(word==twelveWords[i]){
@@ -88,7 +87,7 @@ int main() {
                 status = 0;
                 playAgain = 0;
                 size = 101;
-                storeWords(wordArr,"Animals.txt", size);
+                storeWords(wordArr,"animals.txt", size);
                 chooseWords(wordArr, size, twelveWords);
                 printMatrix(twelveWords);
                 do{
@@ -109,9 +108,9 @@ int main() {
                         bool valid(0);
                         cout << "Enter word: ";
                         cin >> word;
-                        // for_each(word.begin(), word.end(), [](char & c){
-                        //         c = toupper(c);
-                        //     });
+                        for_each(word.begin(), word.end(), [](char & c){
+                            c = toupper(c);
+                        });
                         // Check if entered word is valid
                         for(int i=0; i<5; i++){
                             if(word==twelveWords[i]){
@@ -126,12 +125,13 @@ int main() {
                     }
                 }while(status!=1);
                 break;
+                
             // Countries
             case 3:
                 status = 0;
                 playAgain = 0;
                 size = 80;
-                storeWords(wordArr,"Countries.txt", size);
+                storeWords(wordArr,"countries.txt", size);
                 chooseWords(wordArr, size, twelveWords);
                 printMatrix(twelveWords);
                 do{
@@ -152,9 +152,9 @@ int main() {
                         bool valid(0);
                         cout << "Enter word: ";
                         cin >> word;
-                        // for_each(word.begin(), word.end(), [](char & c){
-                        //         c = toupper(c);
-                        //     });
+                        for_each(word.begin(), word.end(), [](char & c){
+                            c = toupper(c);
+                        });
                         // Check if entered word is valid
                         for(int i=0; i<5; i++){
                             if(word==twelveWords[i]){
@@ -169,12 +169,13 @@ int main() {
                     }
                 }while(status!=1);
                 break;
+                
             // Disney
             case 4:
                 status = 0;
                 playAgain = 0;
                 size = 44;
-                storeWords(wordArr,"Disney.txt", size);
+                storeWords(wordArr,"disney.txt", size);
                 chooseWords(wordArr, size, twelveWords);
                 printMatrix(twelveWords);
                 do{
@@ -195,9 +196,9 @@ int main() {
                         bool valid(0);
                         cout << "Enter word: ";
                         cin >> word;
-                        // for_each(word.begin(), word.end(), [](char &c){
-                        //     c = toupper(c);
-                        // });
+                        for_each(word.begin(), word.end(), [](char &c){
+                             c = toupper(c);
+                        });
                         // Check if entered word is valid
                         for(int i=0; i<5; i++){
                             if(word==twelveWords[i]){
@@ -212,12 +213,13 @@ int main() {
                     }
                 }while(status!=1);
                 break;
+                
             // Geometry
             case 5:
                 status = 0;
                 playAgain = 0;
                 size = 39;
-                storeWords(wordArr,"Geometry.txt", size);
+                storeWords(wordArr,"geometry.txt", size);
                 chooseWords(wordArr, size, twelveWords);
                 printMatrix(twelveWords);
                 do{
@@ -238,9 +240,9 @@ int main() {
                         bool valid(0);
                         cout << "Enter word: ";
                         cin >> word;
-                        // for_each(word.begin(), word.end(), [](char & c){
-                        //         c = toupper(c);
-                        //     });
+                        for_each(word.begin(), word.end(), [](char & c){
+                            c = toupper(c);
+                        });
                         // Check if entered word is valid
                         for(int i=0; i<5; i++){
                             if(word==twelveWords[i]){
@@ -255,13 +257,19 @@ int main() {
                     }
                 }while(status!=1);
                 break;
+                
             // Exit Program
             case 6:
                 cout << "Program terminated." << endl;
                 exit(0);
+                
             // Invalid Entry
             default:
+            {
                 cout << "Invalid Selection" << endl;
+                cin >> choice;
+                break;
+            }
         }
     }while(choice!=6);
 }
@@ -312,9 +320,9 @@ void chooseWords(vector<string> wordArr, int size, vector<string>& twelveWords){
     for(int i = 0; i < 5; i++){
         idx = wordIndex[i];
         holder = wordArr[idx];
-        // for_each(holder.begin(), holder.end(), [](char & c){
-        //     c = toupper(c);
-        // });
+         for_each(holder.begin(), holder.end(), [](char & c){
+             c = toupper(c);
+         });
         twelveWords.push_back(holder);
     }
 }
@@ -420,9 +428,9 @@ void continueGame(vector<string> twelveWords, vector<string> &wordsFound, int &s
     cout << score << " out of 5 words found" << endl;
     cout << "Enter word: ";
     cin >> word;
-    // for_each(word.begin(), word.end(), [](char & c){
-    //         c = toupper(c);
-    //     });
+    for_each(word.begin(), word.end(), [](char & c){
+        c = toupper(c);
+    });
     // Check if entered word is valid
     for(int i=0; i<5; i++){
         if(word==twelveWords[i]){
